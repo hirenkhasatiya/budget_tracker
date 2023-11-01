@@ -37,6 +37,11 @@ dependencies:
   cupertino_icons: ^1.0.2
   get: any
   gap: any
+  logger: any
+  path: any
+  sqflite: any
+  
+
 
 dev_dependencies:
   flutter_test:

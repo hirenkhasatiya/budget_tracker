@@ -18,27 +18,93 @@ class HomePage extends StatelessWidget {
         actions: [
           IconButton(
             onPressed: () {},
-            icon: Icon(Icons.trending_up),
+            icon: const Icon(Icons.trending_up),
           )
         ],
       ),
       backgroundColor: c4,
       drawer: Drawer(
         backgroundColor: c4,
+        child: ListView(
+          padding: const EdgeInsets.all(0),
+          children: [
+            DrawerHeader(
+              decoration: BoxDecoration(
+                color: c1,
+              ),
+              child: UserAccountsDrawerHeader(
+                decoration: BoxDecoration(color: c1),
+                accountName: const Text(
+                  "Hiren Khasatiya",
+                  style: TextStyle(fontSize: 18),
+                ),
+                accountEmail: const Text("khasatiyahiren43@gmail.com"),
+                currentAccountPictureSize: const Size.square(40),
+                currentAccountPicture: CircleAvatar(
+                  backgroundColor: c4,
+                  child: Text(
+                    "H",
+                    style: TextStyle(fontSize: 30.0, color: c1),
+                  ),
+                ),
+              ),
+            ),
+            ListTile(
+              leading: const Icon(Icons.person),
+              title: const Text(' My Profile '),
+              onTap: () {
+                Navigator.pop(context);
+              },
+            ),
+            ListTile(
+              leading: const Icon(Icons.trending_up_outlined),
+              title: const Text(' My Budget '),
+              onTap: () {
+                Navigator.pop(context);
+              },
+            ),
+            ListTile(
+              leading: const Icon(Icons.workspace_premium),
+              title: const Text(' Go Premium '),
+              onTap: () {
+                Navigator.pop(context);
+              },
+            ),
+            ListTile(
+              leading: const Icon(Icons.edit),
+              title: const Text(' Edit Profile '),
+              onTap: () {
+                Navigator.pop(context);
+              },
+            ),
+            ListTile(
+              leading: const Icon(Icons.logout),
+              title: const Text('LogOut'),
+              onTap: () {
+                Navigator.pop(context);
+              },
+            ),
+            ListTile(
+              leading: const Icon(Icons.light_mode),
+              title: const Text('Theme'),
+              onTap: () {},
+            ),
+          ],
+        ),
       ),
       body: PageView(
         onPageChanged: (value) => controller.changeIndex(index: value),
         controller: controller.pageController,
         children: [
-          Icon(Icons.home_filled),
-          Icon(Icons.category_rounded),
+          const Icon(Icons.home_filled),
+          const Icon(Icons.category_rounded),
         ],
       ),
       floatingActionButton: FloatingActionButton.small(
         onPressed: () {},
         backgroundColor: c1,
         foregroundColor: c4,
-        child: Icon(Icons.add),
+        child: const Icon(Icons.add),
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(20),
         ),
@@ -52,7 +118,7 @@ class HomePage extends StatelessWidget {
           indicatorShape:
               RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
           labelBehavior: NavigationDestinationLabelBehavior.onlyShowSelected,
-          animationDuration: Duration(milliseconds: 600),
+          animationDuration: const Duration(milliseconds: 600),
           selectedIndex: controller.selectedIndex.value,
           onDestinationSelected: (value) =>
               controller.changeIndex(index: value),
