@@ -1,13 +1,19 @@
-class budgetModal {
+class Budget {
   int id;
   String name;
 
-  budgetModal(
-    this.id,
-    this.name,
-  );
-  factory budgetModal.fromMap({required Map data}) => budgetModal(
-        data['id'],
+  Budget(
+    this.name, {
+    this.id = 0,
+  });
+  factory Budget.fromMap({required Map data}) => Budget(
         data['name'],
+        id: data['id'],
       );
+
+  Map<String, dynamic> get toMap {
+    return {
+      'name': name,
+    };
+  }
 }

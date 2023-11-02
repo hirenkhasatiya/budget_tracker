@@ -1,3 +1,4 @@
+import 'package:budget_tracker_app/Modals/budget_modal.dart';
 import 'package:logger/logger.dart';
 import 'package:path/path.dart';
 import 'package:sqflite/sqflite.dart';
@@ -39,5 +40,20 @@ class BudgetHelper {
       },
       onUpgrade: (db, oldVersion, newVersion) => {},
     );
+  }
+
+  Future<List<Budget>> getbudget() async {
+    String query = "SELECT * FROM $budgetTable";
+
+    List<Map> alldata = await database.rawQuery(query);
+
+    List<Budget> allBudget =
+        alldata.map((e) => Budget.fromMap(data: e)).toList();
+
+    return allBudget;
+  }
+
+  Future<int> insertBudget({required Budget budget}) {
+    return database.insert(budgetTable, budget.toMap);
   }
 }

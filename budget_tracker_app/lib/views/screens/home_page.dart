@@ -1,4 +1,6 @@
+import 'package:budget_tracker_app/Controller/DBController.dart';
 import 'package:budget_tracker_app/Controller/budget_controller.dart';
+import 'package:budget_tracker_app/Modals/budget_modal.dart';
 import 'package:budget_tracker_app/Utils/color_utils.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -95,19 +97,16 @@ class HomePage extends StatelessWidget {
       body: PageView(
         onPageChanged: (value) => controller.changeIndex(index: value),
         controller: controller.pageController,
-        children: [
-          const Icon(Icons.home_filled),
-          const Icon(Icons.category_rounded),
-        ],
+        children: controller.page,
       ),
       floatingActionButton: FloatingActionButton.small(
         onPressed: () {},
         backgroundColor: c1,
         foregroundColor: c4,
-        child: const Icon(Icons.add),
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(20),
         ),
+        child: const Icon(Icons.add),
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       bottomNavigationBar: Obx(() {
@@ -123,14 +122,6 @@ class HomePage extends StatelessWidget {
           onDestinationSelected: (value) =>
               controller.changeIndex(index: value),
           destinations: [
-            NavigationDestination(
-              icon: Icon(Icons.home, color: c1),
-              label: "Home",
-            ),
-            NavigationDestination(
-              icon: Icon(Icons.category_rounded, color: c1),
-              label: "Category",
-            ),
             NavigationDestination(
               icon: Icon(Icons.home, color: c1),
               label: "Home",
